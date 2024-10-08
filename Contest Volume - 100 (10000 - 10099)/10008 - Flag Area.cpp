@@ -1,31 +1,25 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath> // For M_PI and pow
+#include <cmath> // for M_PI
 using namespace std;
 
 int main() {
     int W;
-    const double PI = 3.1416;
 
-    // Read input until end-of-file
     while (cin >> W) {
-        // Calculate length from width
-        double L = (10.0 / 6.0) * W;
+        // Length and Width of the flag
+        double length = (10.0 / 6.0) * W; // Total length based on the width
+        double areaFlag = length * W; // Area of the flag
 
-        // Calculate radius of the red disc
-        double radius = L / 5.0;
+        // Radius of the red circle
+        double radius = length / 5.0; // Radius is 1/5 of length
+        double areaCircle = 3.1416 * radius * radius; // Area of the circle
 
-        // Calculate area of the flag
-        double areaFlag = L * W;
+        // Area of the green part
+        double areaGreen = areaFlag - areaCircle;
 
-        // Calculate area of the red disc
-        double areaRedDisc = PI * pow(radius, 2);
-
-        // Calculate area of the green part
-        double areaGreenPart = areaFlag - areaRedDisc;
-
-        // Print the result rounded to two decimal places
-        cout << fixed << setprecision(2) << areaGreenPart << endl;
+        // Output the area of the green part rounded to 2 decimal places
+        cout << fixed << setprecision(2) << areaGreen << endl;
     }
 
     return 0;
